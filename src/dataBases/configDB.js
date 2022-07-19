@@ -3,6 +3,7 @@ import 'dotenv/config'
 const MONGO_USER = process.env.MONGO_USER
 const MONGO_PASS = process.env.MONGO_PASS
 const DB_NAME = process.env.DB_NAME
+const PORT = process.env.PORT || 8080
 
 export default {
     mongoDb:{

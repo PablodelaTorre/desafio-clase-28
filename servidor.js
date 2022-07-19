@@ -23,7 +23,7 @@ import 'dotenv/config'
 import passport from 'passport';
 
 //variables del env
-const PORT = process.env.PORT;
+
 const MONGO_USER = process.env.MONGO_USER;
 const MONGO_PASS = process.env.MONGO_PASS;
 const DB_NAME = process.env.DB_NAME;
@@ -94,6 +94,6 @@ io.on('connection',(socket)=>{
 })
 
 //const PORT = 8080
-const server = httpServer.listen(PORT, () => {
-    console.log(`servidor escuchando en el puerto ${PORT}`)
+const server = httpServer.listen(process.env.PORT, () => {
+    console.log(`servidor escuchando en el puerto ${process.env.PORT}`)
 })
