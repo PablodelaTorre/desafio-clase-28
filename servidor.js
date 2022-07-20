@@ -4,6 +4,8 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import path from 'path';
 import { fileURLToPath } from 'url';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers'
 //import'./src/dataBases/database.js'
 //import passport from 'passport';
 import './src/passport/local.js'
@@ -21,6 +23,12 @@ import logoutRouter from "./src/routes/logout.js"
 import registroRouter from "./src/routes/registro.js"
 import 'dotenv/config'
 import passport from 'passport';
+
+// yargs 
+
+const yarg = yargs(hideBin(process.argv))
+const args = yarg.alias({m:'modo',p:'puerto',d:'debug'}).default({m:'prod', p:0, d:'false'}).boolean('d').argv
+console.log(args)
 
 //variables del env
 
@@ -92,6 +100,8 @@ io.on('connection',(socket)=>{
         io.sockets.emit('mensajes',mensajes)
     })
 })
+
+
 
 //const PORT = 8080
 const server = httpServer.listen(process.env.PORT, () => {
