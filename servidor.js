@@ -21,6 +21,7 @@ import routesMensajes from "./src/routes/routes-mensajes.js"
 import loginRouter from "./src/routes/login.js"
 import logoutRouter from "./src/routes/logout.js"
 import registroRouter from "./src/routes/registro.js"
+import infoRoutes from "./src/routes/info.js"
 import 'dotenv/config'
 import passport from 'passport';
 
@@ -65,6 +66,7 @@ app.use('/productos', routesProductos)
 app.use('/registro',registroRouter)
 app.use('/login',loginRouter)
 app.use('/logout',logoutRouter)
+app.use('/info',infoRoutes)
 //app.use(passport.initialize())
 //app.use(passport.session())
 app.set('views','./src/views')
@@ -100,8 +102,6 @@ io.on('connection',(socket)=>{
         io.sockets.emit('mensajes',mensajes)
     })
 })
-
-
 
 //const PORT = 8080
 const server = httpServer.listen(process.env.PORT, () => {
